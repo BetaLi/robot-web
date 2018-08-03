@@ -209,58 +209,58 @@ export const getActivities = [
     id: 'trend-1',
     updatedAt: new Date(),
     user: {
-      name: '曲丽丽',
+      name: '工程师A',
       avatar: avatars2[0],
     },
     group: {
-      name: '高逼格设计天团',
+      name: '机器人餐厅',
       link: 'http://github.com/',
     },
     project: {
-      name: '六月迭代',
+      name: 'UR5',
       link: 'http://github.com/',
     },
-    template: '在 @{group} 新建项目 @{project}',
+    template: '在 @{group} 操作 @{project} 机器人',
   },
   {
     id: 'trend-2',
     updatedAt: new Date(),
     user: {
-      name: '付小小',
+      name: '工程师A',
       avatar: avatars2[1],
     },
     group: {
-      name: '高逼格设计天团',
+      name: '机器人餐厅',
       link: 'http://github.com/',
     },
     project: {
-      name: '六月迭代',
+      name: 'FANUC',
       link: 'http://github.com/',
     },
-    template: '在 @{group} 新建项目 @{project}',
+    template: '在 @{group} 操作 @{project} 机器人',
   },
   {
     id: 'trend-3',
     updatedAt: new Date(),
     user: {
-      name: '林东东',
+      name: '工程师A',
       avatar: avatars2[2],
     },
     group: {
-      name: '中二少女团',
+      name: '机器人餐厅',
       link: 'http://github.com/',
     },
     project: {
-      name: '六月迭代',
+      name: 'UR3',
       link: 'http://github.com/',
     },
-    template: '在 @{group} 新建项目 @{project}',
+    template: '在 @{group} 操作 @{project} 机器人',
   },
   {
     id: 'trend-4',
     updatedAt: new Date(),
     user: {
-      name: '周星星',
+      name: '工程师A',
       avatar: avatars2[4],
     },
     project: {
@@ -273,7 +273,7 @@ export const getActivities = [
     id: 'trend-5',
     updatedAt: new Date(),
     user: {
-      name: '朱偏右',
+      name: '工程师A',
       avatar: avatars2[3],
     },
     project: {
@@ -290,7 +290,7 @@ export const getActivities = [
     id: 'trend-6',
     updatedAt: new Date(),
     user: {
-      name: '乐哥',
+      name: '工程师A',
       avatar: avatars2[5],
     },
     group: {

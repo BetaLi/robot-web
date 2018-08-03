@@ -231,8 +231,7 @@ export default class Workplace extends PureComponent {
               loading={activitiesLoading}
             >
               <List loading={activitiesLoading} size="large">
-                {/* <div className={styles.activitiesList}>{this.renderActivities()}</div> */}
-                <div className={styles.activitiesList}>这里展示餐厅设备的实时运转情况</div>
+                <div className={styles.activitiesList}>{this.renderActivities()}</div>
               </List>
             </Card>
           </Col>
