@@ -53,19 +53,19 @@ const members = [
   },
   {
     id: 'members-3',
-    title: '设计天团',
+    title: '机器人干活组',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/gaOngJwsRYRaVAuXXcmB.png',
     link: '',
   },
   {
     id: 'members-4',
-    title: '中二少女团',
+    title: '机器人打架组',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/ubnKSIfAJTxIgXOKlciN.png',
     link: '',
   },
   {
     id: 'members-5',
-    title: '骗你学计算机',
+    title: '机器人炒菜组',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/WhxKECPNujWoWEFNdnJE.png',
     link: '',
   },
