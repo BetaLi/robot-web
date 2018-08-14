@@ -6,11 +6,7 @@ const menuData = [
     name: 'dashboard',
     icon: 'dashboard',
     path: 'dashboard',
-    children: [
-      {
-    name:'公司画廊',
-    path:'gallery',
-      },
+    children: [ 
       {
         name: '分析页',
         path: 'analysis',
@@ -24,6 +20,10 @@ const menuData = [
         path: 'workplace',
         // hideInBreadcrumb: true,
         // hideInMenu: true,
+      },
+      {
+        name:'公司画廊',
+        path:'gallery',
       },
     ],
   },

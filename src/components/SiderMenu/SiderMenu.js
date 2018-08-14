@@ -231,9 +231,11 @@ export default class SiderMenu extends PureComponent {
         breakpoint="lg"
         onCollapse={onCollapse}
         width={256}
+        defaultCollapsed = {false}
         className={styles.sider}
+        theme="light"
       >
-        <div className={styles.logo} key="logo">
+        <div className={styles.logo} key="logo" style={{backgroundColor:"white"}}>
           <Link to="/">
             <img src={logo} alt="logo" />
             <h1>BGY-ROBOT</h1>
@@ -241,7 +243,7 @@ export default class SiderMenu extends PureComponent {
         </div>
         <Menu
           key="Menu"
-          theme="dark"
+          theme="light"
           mode="inline"
           {...menuProps}
           onOpenChange={this.handleOpenChange}
