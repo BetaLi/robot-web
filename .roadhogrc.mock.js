@@ -98,7 +98,50 @@ const proxy = {
   'POST /api/register': (req, res) => {
     res.send({ status: 'ok', currentAuthority: 'user' });
   },
-  'GET /api/notices': getNotices,
+
+  //'GET /api/notices': getNotices,
+
+  // 'GET /api/notices': [
+  //     {
+  //       id: '000000001',
+  //       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
+  //       title: '你收到了 14 份新周报',
+  //       datetime: '2017-08-09',
+  //       type: '通知',
+  //     },
+      
+  //     {
+  //       id: '000000012',
+  //       title: 'ABCD 版本发布',
+  //       description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
+  //       extra: '进行中',
+  //       status: 'processing',
+  //       type: '待办',
+  //     },
+  //   ],
+
+  // 'GET /api/notices': (req,res) => {
+  //   res.send([
+  //     {
+  //       id: '000000001',
+  //       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
+  //       title: '你收到了 14 份新周报',
+  //       datetime: '2017-08-09',
+  //       type: '通知',
+  //     }, 
+  //     {
+  //       id: '000000012',
+  //       title: 'ABCD 版本发布',
+  //       description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
+  //       extra: '进行中',
+  //       status: 'processing',
+  //       type: '待办',
+  //     },
+  //   ])
+  // },
+
+  //'GET /api/notices': 'http://127.0.0.1:5000/',
+
   'GET /api/500': (req, res) => {
     res.status(500).send({
       timestamp: 1513932555104,

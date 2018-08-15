@@ -221,7 +221,7 @@ class BasicLayout extends React.PureComponent {
           Authorized={Authorized}
           menuData={getMenuData()}
           // collapsed={collapsed}
-          collapsed={true}
+          collapsed
           location={location}
           isMobile={mb}
           onCollapse={this.handleMenuCollapse}
