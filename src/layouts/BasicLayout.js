@@ -220,8 +220,7 @@ class BasicLayout extends React.PureComponent {
           // you will be forced to jump to the 403 interface without permission
           Authorized={Authorized}
           menuData={getMenuData()}
-          // collapsed={collapsed}
-          collapsed
+          collapsed={collapsed}
           location={location}
           isMobile={mb}
           onCollapse={this.handleMenuCollapse}

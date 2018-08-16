@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
+import moment from 'moment';
 import {
   Row,
   Col,
@@ -12,6 +13,7 @@ import {
   Tooltip,
   Menu,
   Dropdown,
+  List,
 } from 'antd';
 import numeral from 'numeral';
 import {
@@ -31,6 +33,10 @@ import { getTimeDistance } from '../../utils/utils';
 
 import styles from './Analysis.less';
 
+import aler from "../../assets/ts-alert-shine.svg" 
+// import list from '../../models/list';
+
+
 const { TabPane } = Tabs;
 const { RangePicker } = DatePicker;
 
@@ -48,8 +54,10 @@ const Yuan = ({ children }) => (
   />
 );
 
-@connect(({ chart, loading }) => ({
+@connect(({ project,chart, loading }) => ({
+  project,
   chart,
+  projectLoading: loading.effects['project/fetchNotice'],
   loading: loading.effects['chart/fetch'],
 }))
 export default class Analysis extends Component {
@@ -63,6 +71,9 @@ export default class Analysis extends Component {
     const { dispatch } = this.props;
     dispatch({
       type: 'chart/fetch',
+    });
+    dispatch({
+      type: 'project/fetchNotice',
     });
   }
 
@@ -123,7 +134,7 @@ export default class Analysis extends Component {
 
   render() {
     const { rangePickerValue, salesType, currentTabKey } = this.state;
-    const { chart, loading } = this.props;
+    const { chart, loading, project:{notice} } = this.props;
     const {
       visitData,
       visitData2,
@@ -135,6 +146,7 @@ export default class Analysis extends Component {
       salesTypeDataOnline,
       salesTypeDataOffline,
     } = chart;
+    // const {project:{notice}} = this.props;
 
     const salesPieData =
       salesType === 'all'
@@ -256,6 +268,14 @@ export default class Analysis extends Component {
 
     const randomNum = numeral(Math.random()*1000000).format('0,0')
 
+    const data = [
+      'Racing car sprays burning fuel into crowd.',
+      'Japanese princess to wed commoner.',
+      'Australian walks 100km after outback crash.',
+      'Man charged over missing wedding girl.',
+      'Los Angeles battles huge wildfires.',
+    ];
+
     return (
       <Fragment>
         <Row gutter={24}>
@@ -346,6 +366,62 @@ export default class Analysis extends Component {
             </ChartCard>
           </Col>
         </Row>
+
+        <Row gutter={24}>
+          <Col style={{marginBottom:12}} span={16}>
+            <Card
+              className={styles.projectList}
+              style={{ marginBottom: 24 }}
+              title="AGV机器人状态"
+              bordered={false}
+              bodyStyle={{ padding: 0 }}
+            >
+              {notice.map(item => (
+                <Card.Grid className={styles.projectGrid} key={item.id}>
+                  <Card bodyStyle={{ padding: 0 }} bordered={false}>
+                    <Card.Meta
+                      title={
+                        <div className={styles.cardTitle}>
+                          <img size="small" src={aler} alt="loading.." width="22px" />
+                          <a>{item.title}</a>
+                        </div>
+                      }
+                      description={
+                        <div>
+                          <p>{item.description[0]}</p>
+                          <p>{item.description[1]}</p>
+                          <p>{item.description[2]}</p>
+                        </div>
+                      }
+                    />
+                    <div className={styles.projectItemContent}>
+                      {item.updatedAt && (
+                      <span className={styles.datetime} title={item.updatedAt}>
+                        {moment(item.updatedAt).fromNow()}
+                      </span>
+                      )}
+                    </div>
+                  </Card>
+                </Card.Grid>
+              ))}
+            </Card>
+          </Col>
+          <Col style={{marginBottom:12}} span={8}>
+            <Card title="当前订单信息">
+              <List
+                size="small"
+                bordered={false}
+                header={<div>Header</div>}
+                footer={<div>Footer</div>}
+                dataSource={data}
+                renderItem={item => (<List.Item>{item}</List.Item>)}
+              />
+            </Card>
+          </Col>
+        </Row>
+
+
+
 
         <Card loading={loading} bordered={false} bodyStyle={{ padding: 0 }}>
           <div className={styles.salesCard}>

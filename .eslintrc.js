@@ -48,6 +48,7 @@ module.exports = {
     'import/no-unresolved': [0],
     'react/no-unused-state':[0],
     'react/destructuring-assignment':[0],
+    'Link':[0],
     'comma-dangle': [
       'error',
       {
