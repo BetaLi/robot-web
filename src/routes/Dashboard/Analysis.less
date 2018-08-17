@@ -48,6 +48,65 @@
   }
 }
 
+
+.projectList {
+  :global {
+    .ant-card-meta-description {
+      color: @text-color-secondary;
+      height: 120px;
+      line-height: 15px;
+      overflow: hidden;
+      margin-left: 0;
+    }
+  }  
+  .cardTitle {
+    font-size: 0;
+    margin-bottom: 5px;
+    a {
+      color: @heading-color;
+      margin-left: 12px;
+      line-height: 24px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: top;
+      font-size: @font-size-base;
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
+  .projectGrid {
+    width: 50%;
+  }
+}
+
+
+//   .projectItemContent {
+//     display: flex;
+//     margin-top: 8px;
+//     overflow: hidden;
+//     font-size: 12px;
+//     height: 20px;
+//     line-height: 20px;
+//     .textOverflow();
+//     a {
+//       color: @text-color-secondary;
+//       display: inline-block;
+//       flex: 1 1 0;
+//       .textOverflow();
+//       &:hover {
+//         color: @primary-color;
+//       }
+//     }
+//     .datetime {
+//       color: @disabled-color;
+//       flex: 0 0 auto;
+//       float: right;
+//     }
+//   }
+// }
+
+
 .salesExtra {
   display: inline-block;
   margin-right: 24px;

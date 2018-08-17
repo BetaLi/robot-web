@@ -72,9 +72,16 @@ export default class Analysis extends Component {
     dispatch({
       type: 'chart/fetch',
     });
-    dispatch({
-      type: 'project/fetchNotice',
-    });
+
+    setInterval(()=>{
+      dispatch({
+        type: 'project/fetchNotice',
+      });
+      dispatch({
+        type: 'project/fetchOrder',
+      })
+      },3000)
+
   }
 
   componentWillUnmount() {
@@ -134,7 +141,7 @@ export default class Analysis extends Component {
 
   render() {
     const { rangePickerValue, salesType, currentTabKey } = this.state;
-    const { chart, loading, project:{notice} } = this.props;
+    const { chart, loading, project:{notice,order} } = this.props;
     const {
       visitData,
       visitData2,
@@ -146,6 +153,8 @@ export default class Analysis extends Component {
       salesTypeDataOnline,
       salesTypeDataOffline,
     } = chart;
+
+
     // const {project:{notice}} = this.props;
 
     const salesPieData =
@@ -268,13 +277,13 @@ export default class Analysis extends Component {
 
     const randomNum = numeral(Math.random()*1000000).format('0,0')
 
-    const data = [
-      'Racing car sprays burning fuel into crowd.',
-      'Japanese princess to wed commoner.',
-      'Australian walks 100km after outback crash.',
-      'Man charged over missing wedding girl.',
-      'Los Angeles battles huge wildfires.',
-    ];
+    // const data = [
+    //   'Racing car sprays burning fuel into crowd.',
+    //   'Japanese princess to wed commoner.',
+    //   'Australian walks 100km after outback crash.',
+    //   'Man charged over missing wedding girl.',
+    //   'Los Angeles battles huge wildfires.',
+    // ];
 
     return (
       <Fragment>
@@ -306,7 +315,7 @@ export default class Analysis extends Component {
           <Col {...topColResponsiveProps}>
             <ChartCard
               bordered={false}
-              title="访问量"
+              title="客流量"
               loading={loading}
               action={
                 <Tooltip title="指标说明">
@@ -314,7 +323,7 @@ export default class Analysis extends Component {
                 </Tooltip>
               }
               total={numeral(8846).format('0,0')}
-              footer={<Field label="日访问量" value={numeral(1234).format('0,0')} />}
+              footer={<Field label="日客流量" value={numeral(1234).format('0,0')} />}
               contentHeight={46}
             >
               <MiniArea color="#975FE4" data={visitData} />
@@ -371,7 +380,7 @@ export default class Analysis extends Component {
           <Col style={{marginBottom:12}} span={16}>
             <Card
               className={styles.projectList}
-              style={{ marginBottom: 24 }}
+              style={{ marginBottom: 10 }}
               title="AGV机器人状态"
               bordered={false}
               bodyStyle={{ padding: 0 }}
@@ -391,6 +400,7 @@ export default class Analysis extends Component {
                           <p>{item.description[0]}</p>
                           <p>{item.description[1]}</p>
                           <p>{item.description[2]}</p>
+                          <p>{item.description[3]}</p>
                         </div>
                       }
                     />
@@ -411,9 +421,7 @@ export default class Analysis extends Component {
               <List
                 size="small"
                 bordered={false}
-                header={<div>Header</div>}
-                footer={<div>Footer</div>}
-                dataSource={data}
+                dataSource={order}
                 renderItem={item => (<List.Item>{item}</List.Item>)}
               />
             </Card>
@@ -480,6 +488,39 @@ export default class Analysis extends Component {
           <Col xl={12} lg={24} md={24} sm={24} xs={24}>
             <Card
               loading={loading}
+              className={styles.salesCard}
+              bordered={false}
+              title="销售额类别占比"
+              bodyStyle={{ padding: 24 }}
+              extra={
+                <div className={styles.salesCardExtra}>
+                  {iconGroup}
+                  <div className={styles.salesTypeRadio}>
+                    <Radio.Group value={salesType} onChange={this.handleChangeSalesType}>
+                      <Radio.Button value="all">全部渠道</Radio.Button>
+                      <Radio.Button value="online">线上</Radio.Button>
+                      <Radio.Button value="offline">门店</Radio.Button>
+                    </Radio.Group>
+                  </div>
+                </div>
+              }
+              style={{ marginTop: 24, minHeight: 509 }}
+            >
+              <h4 style={{ marginTop: 8, marginBottom: 32 }}>销售额</h4>
+              <Pie
+                hasLegend
+                subTitle="销售额"
+                total={() => <Yuan>{salesPieData.reduce((pre, now) => now.y + pre, 0)}</Yuan>}
+                data={salesPieData}
+                valueFormat={value => <Yuan>{value}</Yuan>}
+                height={248}
+                lineWidth={4}
+              />
+            </Card>
+          </Col>
+          <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+            <Card
+              loading={loading}
               bordered={false}
               title="线上热门搜索"
               extra={iconGroup}
@@ -523,39 +564,6 @@ export default class Analysis extends Component {
                   style: { marginBottom: 0 },
                   pageSize: 5,
                 }}
-              />
-            </Card>
-          </Col>
-          <Col xl={12} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              loading={loading}
-              className={styles.salesCard}
-              bordered={false}
-              title="销售额类别占比"
-              bodyStyle={{ padding: 24 }}
-              extra={
-                <div className={styles.salesCardExtra}>
-                  {iconGroup}
-                  <div className={styles.salesTypeRadio}>
-                    <Radio.Group value={salesType} onChange={this.handleChangeSalesType}>
-                      <Radio.Button value="all">全部渠道</Radio.Button>
-                      <Radio.Button value="online">线上</Radio.Button>
-                      <Radio.Button value="offline">门店</Radio.Button>
-                    </Radio.Group>
-                  </div>
-                </div>
-              }
-              style={{ marginTop: 24, minHeight: 509 }}
-            >
-              <h4 style={{ marginTop: 8, marginBottom: 32 }}>销售额</h4>
-              <Pie
-                hasLegend
-                subTitle="销售额"
-                total={() => <Yuan>{salesPieData.reduce((pre, now) => now.y + pre, 0)}</Yuan>}
-                data={salesPieData}
-                valueFormat={value => <Yuan>{value}</Yuan>}
-                height={248}
-                lineWidth={4}
               />
             </Card>
           </Col>
