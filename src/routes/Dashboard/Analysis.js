@@ -106,7 +106,7 @@ export default class Analysis extends Component {
   //     })
   //   }, 3000)
 }
-
+ 
   async componentDidUpdate (){
 
   const {
@@ -114,7 +114,6 @@ export default class Analysis extends Component {
       devicesLocation,
     },
   } = this.props; 
-document.getElementById('main').style.backgroundColor= 'white'
   const myChart =await echarts.init(document.getElementById('main'));
 
   const data = await devicesLocation
@@ -310,7 +309,6 @@ document.getElementById('main').style.backgroundColor= 'white'
   }
 
   render() {
-    console.log('uuuu')
     const { rangePickerValue, salesType, currentTabKey } = this.state;
     const { chart, loading, project:{orderList} } = this.props;
     const {
@@ -493,7 +491,7 @@ document.getElementById('main').style.backgroundColor= 'white'
           <Fragment> 
             <Row gutter={24} style={{marginBottom:20}}>
               <Col style={{height:600,width:'100%'}} xl={24} lg={24} md={24} sm={24} xs={24}>
-                <div id='main' style={{height:'100%',width:'100%',margin:0}} />
+                <div id='main' style={{height:'100%',width:'100%'}} />
               </Col>
             </Row>
           </Fragment>
