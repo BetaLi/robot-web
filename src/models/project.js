@@ -1,4 +1,4 @@
-import { queryProjectNotice, queryProjectOrder } from '../services/api';
+import { queryProjectNotice, queryProjectOrder,queryProjectOrderList } from '../services/api';
 
 export default {
   namespace: 'project',
@@ -6,6 +6,7 @@ export default {
   state: {
     notice: [],
     order:[],
+    orderList:[],
   },
 
   effects: {
@@ -23,6 +24,13 @@ export default {
         payload: Array.isArray(orderRes)? orderRes : [],
       });
     },
+    *fetchOrderList(_,{ call, put }) {
+      const orderList = yield call(queryProjectOrderList);
+      yield put({
+        type: 'saveOrderList',
+        payload:Array.isArray(orderList)?orderList:[],
+      })
+    }
   },
   reducers: {
     saveNotice(state, action) {
@@ -35,6 +43,12 @@ export default {
       return {
         ...state,
         order: action.payload,
+      }
+    },
+    saveOrderList(state,action) {
+      return {
+        ...state,
+        orderList: action.payload,
       }
     },
   },

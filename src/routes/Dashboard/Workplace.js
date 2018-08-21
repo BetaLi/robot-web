@@ -190,7 +190,7 @@ export default class Workplace extends PureComponent {
               title="AGV机器人状态"
               bordered={false}
               extra={<Link to="/dashboard/workplace">全部项目</Link>}
-              loading={projectLoading}
+              // loading={projectLoading}
               bodyStyle={{ padding: 0 }}
             >
               {notice.map(item => (
@@ -208,15 +208,15 @@ export default class Workplace extends PureComponent {
                           <p>{item.description[0]}</p>
                           <p>{item.description[1]}</p>
                           <p>{item.description[2]}</p>
+                          <p>{item.description[3]}</p>
                         </div>
                       }
                     />
                     <div className={styles.projectItemContent}>
-                      <Link to="/dashboard/workplace">{item.member || ''}</Link>
                       {item.updatedAt && (
-                        <span className={styles.datetime} title={item.updatedAt}>
-                          {moment(item.updatedAt).fromNow()}
-                        </span>
+                      <span className={styles.datetime} title={item.updatedAt}>
+                        {moment(item.updatedAt).fromNow()}
+                      </span>
                       )}
                     </div>
                   </Card>
