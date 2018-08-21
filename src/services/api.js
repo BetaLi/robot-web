@@ -12,6 +12,9 @@ export async function queryProjectOrder() {
 export async function queryProjectOrderList(){
   return request('/api/project/orderList')
 }
+export async function queryProjectLocation(){
+  return request('/api/project/devicesLocation')
+}
 
 export async function queryActivities() {
   return request('/api/activities');

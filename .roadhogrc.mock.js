@@ -51,6 +51,22 @@ const proxy = {
   ],
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
+  'GET /api/project/devicesLocation': [
+    [
+      [-13380, -5000, 170968690, 'Omron_AGV', 'Omron_AGV'],
+      [4520, -18440, 170968690, 'Omron_AGV', 'Omron_AGV'],
+    ],
+    [
+      [1390, 7500, 251553170, 'MKLM_AGV', 'MKLM_AGV'],
+      [15000, -5600, 251553170, 'MKLM_AGV', 'MKLM_AGV'],
+    ],
+    [
+      [-2529, 7500, 151553170, 'FANUC', 'FANUC'],
+      [-2529, 9500, 151553170, 'FANUC', 'FANUC'],
+      [-2529, 11500, 151553170, 'FANUC', 'FANUC'],
+      [-2529, 13500, 151553170, 'FANUC', 'FANUC'],
+    ],
+  ],
   'GET /api/rule': getRule,
   'POST /api/rule': {
     $params: {

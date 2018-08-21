@@ -62,21 +62,6 @@ const user = [
   '仲尼',
 ];
 
-const deviceState = [
-  '正常',
-  '异常',
-]
-
-const devicePosition = [
-  '炒菜区','用餐区','厨房区',
-]
-
-const deviceTask = [
-  '取菜','放菜','等待',
-]
-
-const batteryState = '70%'
-
 export function fakeList(count) {
   const list = [];
   for (let i = 0; i < count; i += 1) {
@@ -144,18 +129,18 @@ export function getFakeList(req, res, u) {
 export const getNotice = [
   {
     id: 123,
-    title: '1:00',
+    title: '2018-08-21T06:02:53.000Z',
     logo: avatars[0],
-    description: [`设备状态：ok,  当前电池电量：70%`,
+    description: [`设备状态：OK,   当前任务状态：空闲`,
       `当前位置：X: 1212, Y:2345, Angle: 15°`,
       `当前温度：40℃`,
-      `设备IP：192.168.0.103`
+      `设备IP：192.168.0.103`,
     ],
     updatedAt: new Date(),
     member: `当前电池电量70%`,
     href: '',
     memberLink: '',
-  }
+  },
 ];
 
 export const getActivities = [

@@ -1,4 +1,9 @@
-import { queryProjectNotice, queryProjectOrder,queryProjectOrderList } from '../services/api';
+import {
+  queryProjectNotice,
+  queryProjectOrder,
+  queryProjectOrderList,
+  queryProjectLocation,
+} from '../services/api';
 
 export default {
   namespace: 'project',
@@ -7,6 +12,7 @@ export default {
     notice: [],
     order:[],
     orderList:[],
+    devicesLocation:[],
   },
 
   effects: {
@@ -30,7 +36,14 @@ export default {
         type: 'saveOrderList',
         payload:Array.isArray(orderList)?orderList:[],
       })
-    }
+    },
+    *fetchDevicesLocation(_,{ call, put }){
+      const devicesLocation = yield call(queryProjectLocation);
+      yield put({
+        type:'saveLocation',
+        payload:Array.isArray(devicesLocation)?devicesLocation:[],
+      })
+    },
   },
   reducers: {
     saveNotice(state, action) {
@@ -51,5 +64,11 @@ export default {
         orderList: action.payload,
       }
     },
+    saveLocation(state, action) {
+      return {
+          ...state,
+          devicesLocation: action.payload,
+        }
+      },
   },
 };

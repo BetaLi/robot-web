@@ -139,7 +139,7 @@ export default class Workplace extends PureComponent {
   render() {
     const {
       project: { notice },
-      projectLoading,
+      // projectLoading,
       activitiesLoading,
       chart: { radarData },
     } = this.props;
@@ -188,6 +188,84 @@ export default class Workplace extends PureComponent {
               className={styles.projectList}
               style={{ marginBottom: 24 }}
               title="AGV机器人状态"
+              bordered={false}
+              extra={<Link to="/dashboard/workplace">全部项目</Link>}
+              // loading={projectLoading}
+              bodyStyle={{ padding: 0 }}
+            >
+              {notice.map(item => (
+                <Card.Grid className={styles.projectGrid} key={item.id}>
+                  <Card bodyStyle={{ padding: 0 }} bordered={false}>
+                    <Card.Meta
+                      title={
+                        <div className={styles.cardTitle}>
+                          <img size="small" src={aler} alt="loading.." width="22px" />
+                          <a>{item.title}</a>
+                        </div>
+                      }
+                      description={
+                        <div>
+                          <p>{item.description[0]}</p>
+                          <p>{item.description[1]}</p>
+                          <p>{item.description[2]}</p>
+                          <p>{item.description[3]}</p>
+                        </div>
+                      }
+                    />
+                    <div className={styles.projectItemContent}>
+                      {item.updatedAt && (
+                      <span className={styles.datetime} title={item.updatedAt}>
+                        {moment(item.updatedAt).fromNow()}
+                      </span>
+                      )}
+                    </div>
+                  </Card>
+                </Card.Grid>
+              ))}
+            </Card>
+            <Card
+              className={styles.projectList}
+              style={{ marginBottom: 24 }}
+              title="FANUC机器人状态"
+              bordered={false}
+              extra={<Link to="/dashboard/workplace">全部项目</Link>}
+              // loading={projectLoading}
+              bodyStyle={{ padding: 0 }}
+            >
+              {notice.map(item => (
+                <Card.Grid className={styles.projectGrid} key={item.id}>
+                  <Card bodyStyle={{ padding: 0 }} bordered={false}>
+                    <Card.Meta
+                      title={
+                        <div className={styles.cardTitle}>
+                          <img size="small" src={aler} alt="loading.." width="22px" />
+                          <a>{item.title}</a>
+                        </div>
+                      }
+                      description={
+                        <div>
+                          <p>{item.description[0]}</p>
+                          <p>{item.description[1]}</p>
+                          <p>{item.description[2]}</p>
+                          <p>{item.description[3]}</p>
+                        </div>
+                      }
+                    />
+                    <div className={styles.projectItemContent}>
+                      {item.updatedAt && (
+                      <span className={styles.datetime} title={item.updatedAt}>
+                        {moment(item.updatedAt).fromNow()}
+                      </span>
+                      )}
+                    </div>
+                  </Card>
+                </Card.Grid>
+              ))}
+            </Card>
+            <Card
+              className={styles.projectList}
+              style={{ marginBottom: 24 }}
+              title="炒菜机器人状态"
               bordered={false}
               extra={<Link to="/dashboard/workplace">全部项目</Link>}
               // loading={projectLoading}
