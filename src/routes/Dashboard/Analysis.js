@@ -3,6 +3,8 @@ import { connect } from 'dva';
 // import moment from 'moment';
 import echarts from 'echarts/lib/echarts'
 import 'echarts-gl';
+import Chart from 'chart.js';
+// import $ from 'jquery'
 import {
   Row,
   Col,
@@ -114,11 +116,41 @@ export default class Analysis extends Component {
       devicesLocation,
     },
   } = this.props; 
+
+// const ctx = document.getElementById("mycanvas");
+//    let scatterChart = new Chart(ctx, {
+//      type: 'scatter',
+//      data: {
+//        datasets: [{
+//          label: 'Scatter Dataset',
+//          data: [{
+//            x: -10,
+//            y: 0,
+//          }, {
+//            x: 0,
+//            y: 10,
+//          }, {
+//            x: 10,
+//            y: 5,
+//          }],
+//        }],
+//      },
+//      options: {
+//        scales: {
+//          xAxes: [{
+//            type: 'linear',
+//            position: 'bottom',
+//          }],
+//        },
+//      },
+//    });
+
+
   const myChart =await echarts.init(document.getElementById('main'));
 
   const data = await devicesLocation
 
- const option = {
+  const option = {
       
       backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
           offset: 0,
@@ -137,20 +169,20 @@ export default class Analysis extends Component {
           data: ['Omron_AGV', 'MKLM_AGV', 'FANUC'],
       },
       xAxis: {
-        left:'center',
-          splitLine: {
-              lineStyle: {
-                  type: 'solid',
-              },
-          },
+        // left:'center',
+          // splitLine: {
+          //     lineStyle: {
+          //         type: 'none',
+          //     },
+          // },
       },
       yAxis: {
-          splitLine: {
-              lineStyle: {
-                  type: 'solid',
-              },
-          },
-          scale: true,
+          // splitLine: {
+          //     lineStyle: {
+          //         type: 'none',
+          //     },
+          // },
+          // scale: true,
       },
       series: [{
           name: 'Omron_AGV',
@@ -493,6 +525,9 @@ export default class Analysis extends Component {
               <Col style={{height:600,width:'100%'}} xl={24} lg={24} md={24} sm={24} xs={24}>
                 <div id='main' style={{height:'100%',width:'100%'}} />
               </Col>
+            </Row>
+            <Row>
+              <canvas id="mycanvas" style={{wifth:400,height:400}} />
             </Row>
           </Fragment>
         </PageHeaderLayout>
