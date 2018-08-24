@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 // import moment from 'moment';
-import echarts from 'echarts/lib/echarts'
+// import echarts from 'echarts/lib/echarts'
 import 'echarts-gl';
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
 // import $ from 'jquery'
 import {
   Row,
@@ -33,6 +33,7 @@ import {
 } from 'components/Charts';
 import Trend from 'components/Trend';
 import NumberInfo from 'components/NumberInfo';
+// import background from '../../assets/background.png'
 import { getTimeDistance } from '../../utils/utils';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
@@ -41,6 +42,12 @@ import styles from './Analysis.less';
 // import aler from "../../assets/ts-alert-shine.svg"
 import dataLogo from '../../assets/data_logo.svg'
 import deviceLogo from '../../assets/device_logo.png'
+import fanuc from '../../assets/FANUC_20i.PNG'
+import heidou from '../../assets/heidouRobot.png'
+import shangcaiAGV from '../../assets/shangcaiAGV.png'
+import yingbingAGV from '../../assets/yingbingAGV.png'
+import yunliaoAGV from '../../assets/yunliaoAGV.png'
+import metcook from '../../assets/MetCook.png'
 
 require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
@@ -109,13 +116,13 @@ export default class Analysis extends Component {
   //   }, 3000)
 }
  
-  async componentDidUpdate (){
+  componentDidUpdate (){
 
-  const {
-    project: {
-      devicesLocation,
-    },
-  } = this.props; 
+  // const {
+  //   project: {
+  //     devicesLocation,
+  //   },
+  // } = this.props; 
 
 // const ctx = document.getElementById("mycanvas");
 //    let scatterChart = new Chart(ctx, {
@@ -146,140 +153,140 @@ export default class Analysis extends Component {
 //    });
 
 
-  const myChart =await echarts.init(document.getElementById('main'));
+  // const myChart =await echarts.init(document.getElementById('main'));
 
-  const data = await devicesLocation
+  // const data = await devicesLocation
 
-  const option = {
+  // const option = {
       
-      backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
-          offset: 0,
-          color: 'rgb(255,255,255)',
-      }, {
-          offset: 1,
-          color: 'rgb(255,255,255)',
-      }]),
-      title: {
-          text: '机器人餐厅设备电子地图',
-          x:'80',
-          y:0,
-      },
-      legend: {
-          right: 80,
-          data: ['Omron_AGV', 'MKLM_AGV', 'FANUC'],
-      },
-      xAxis: {
-        // left:'center',
-          // splitLine: {
-          //     lineStyle: {
-          //         type: 'none',
-          //     },
-          // },
-      },
-      yAxis: {
-          // splitLine: {
-          //     lineStyle: {
-          //         type: 'none',
-          //     },
-          // },
-          // scale: true,
-      },
-      series: [{
-          name: 'Omron_AGV',
-          data: data[0],
-          type: 'scatter',
-          symbolSize (param) {
-              return Math.sqrt(param[2]) / 5e2;
-          },
-          label: {
-              emphasis: {
-                  show: true,
-                  formatter (param) {
-                      return param.data[3];
-                  },
-                  position: 'top',
-              },
-          },
-          itemStyle: {
+  //     backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+  //         offset: 0,
+  //         color: 'rgb(255,255,255)',
+  //     }, {
+  //         offset: 1,
+  //         color: 'rgb(255,255,255)',
+  //     }]),
+  //     title: {
+  //         text: '机器人餐厅设备电子地图',
+  //         x:'80',
+  //         y:0,
+  //     },
+  //     legend: {
+  //         right: 80,
+  //         data: ['Omron_AGV', 'MKLM_AGV', 'FANUC'],
+  //     },
+  //     xAxis: {
+  //       // left:'center',
+  //         // splitLine: {
+  //         //     lineStyle: {
+  //         //         type: 'none',
+  //         //     },
+  //         // },
+  //     },
+  //     yAxis: {
+  //         // splitLine: {
+  //         //     lineStyle: {
+  //         //         type: 'none',
+  //         //     },
+  //         // },
+  //         // scale: true,
+  //     },
+  //     series: [{
+  //         name: 'Omron_AGV',
+  //         data: data[0],
+  //         type: 'scatter',
+  //         symbolSize (param) {
+  //             return Math.sqrt(param[2]) / 5e2;
+  //         },
+  //         label: {
+  //             emphasis: {
+  //                 show: true,
+  //                 formatter (param) {
+  //                     return param.data[3];
+  //                 },
+  //                 position: 'top',
+  //             },
+  //         },
+  //         itemStyle: {
              
-              normal: {
-                  shadowBlur: 10,
-                  shadowColor: 'rgba(120, 36, 50, 0.5)',
-                  shadowOffsetY: 5,
-                  color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                      offset: 0,
-                      color: 'rgb(251, 118, 123)',
-                  }, {
-                      offset: 1,
-                      color: 'rgb(204, 46, 72)',
-                  }]),
-              },
-          },
-      }, 
-      {
-        name: 'FANUC',
-        data: data[2],
-        type: 'scatter',
-        symbolSize (param) {
-          return Math.sqrt(param[2]) / 5e2;
-        },
-        label: {
-          emphasis: {
-            show: true,
-            formatter (param) {
-              return param.data[3];
-            },
-            position: 'top',
-          },
-        },
-        itemStyle: {
-          normal: {
-            shadowBlur: 10,
-            shadowColor: 'rgba(120, 180, 50, 0.5)',
-            shadowOffsetY: 5,
-            color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-              offset: 0,
-              color: 'rgb(243, 238, 44)',
-            }, {
-              offset: 1,
-              color: 'rgb(204, 178, 0)',
-            }]),
-          },
-        },
-      },
-      {
-          name: 'MKLM_AGV',
-          data: data[1],
-          type: 'scatter',
-          symbolSize(param) {
-              return Math.sqrt(param[2]) / 5e2;
-          },
-          label: {
-              emphasis: {
-                  show: true,
-                  formatter (param) {
-                      return param.data[3];
-                  },
-                  position: 'top',
-              },
-          },
-          itemStyle: {
-              normal: {
-                  shadowBlur: 10,
-                  shadowColor: 'rgba(25, 100, 150, 0.5)',
-                  shadowOffsetY: 5,
-                  color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                      offset: 0,
-                      color: 'rgb(129, 227, 238)',
-                  }, {
-                      offset: 1,
-                      color: 'rgb(25, 183, 207)',
-                  }]),
-              },
-          },
-      }],
-  };
-  myChart.setOption(option)
+  //             normal: {
+  //                 shadowBlur: 10,
+  //                 shadowColor: 'rgba(120, 36, 50, 0.5)',
+  //                 shadowOffsetY: 5,
+  //                 color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+  //                     offset: 0,
+  //                     color: 'rgb(251, 118, 123)',
+  //                 }, {
+  //                     offset: 1,
+  //                     color: 'rgb(204, 46, 72)',
+  //                 }]),
+  //             },
+  //         },
+  //     }, 
+  //     {
+  //       name: 'FANUC',
+  //       data: data[2],
+  //       type: 'scatter',
+  //       symbolSize (param) {
+  //         return Math.sqrt(param[2]) / 5e2;
+  //       },
+  //       label: {
+  //         emphasis: {
+  //           show: true,
+  //           formatter (param) {
+  //             return param.data[3];
+  //           },
+  //           position: 'top',
+  //         },
+  //       },
+  //       itemStyle: {
+  //         normal: {
+  //           shadowBlur: 10,
+  //           shadowColor: 'rgba(120, 180, 50, 0.5)',
+  //           shadowOffsetY: 5,
+  //           color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+  //             offset: 0,
+  //             color: 'rgb(243, 238, 44)',
+  //           }, {
+  //             offset: 1,
+  //             color: 'rgb(204, 178, 0)',
+  //           }]),
+  //         },
+  //       },
+  //     },
+  //     {
+  //         name: 'MKLM_AGV',
+  //         data: data[1],
+  //         type: 'scatter',
+  //         symbolSize(param) {
+  //             return Math.sqrt(param[2]) / 5e2;
+  //         },
+  //         label: {
+  //             emphasis: {
+  //                 show: true,
+  //                 formatter (param) {
+  //                     return param.data[3];
+  //                 },
+  //                 position: 'top',
+  //             },
+  //         },
+  //         itemStyle: {
+  //             normal: {
+  //                 shadowBlur: 10,
+  //                 shadowColor: 'rgba(25, 100, 150, 0.5)',
+  //                 shadowOffsetY: 5,
+  //                 color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+  //                     offset: 0,
+  //                     color: 'rgb(129, 227, 238)',
+  //                 }, {
+  //                     offset: 1,
+  //                     color: 'rgb(25, 183, 207)',
+  //                 }]),
+  //             },
+  //         },
+  //     }],
+  // };
+  // myChart.setOption(option)
   // this.componentWillUnmount()
 }
 
@@ -514,20 +521,182 @@ export default class Analysis extends Component {
         </div>
       </div>
     );
-
-
+    const a= 4
 
     return (
       <div>
         <PageHeaderLayout content={pageHeaderContent} extraContent={extraContent}>
           <Fragment> 
-            <Row gutter={24} style={{marginBottom:20}}>
+            {/* <Row gutter={24} style={{marginBottom:20}}>
               <Col style={{height:600,width:'100%'}} xl={24} lg={24} md={24} sm={24} xs={24}>
                 <div id='main' style={{height:'100%',width:'100%'}} />
               </Col>
-            </Row>
+            </Row> */}
             <Row>
-              <canvas id="mycanvas" style={{wifth:400,height:400}} />
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={fanuc} />}
+                >
+                  <Card.Meta
+                    title="FANUC机器人"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>3台位于试验区，用于参观展示</p>
+                        <p>1台位于厨房，用于炒菜</p>
+                        <p>1台位于洗碗区，用于洗碗</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col> 
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={metcook} />}
+                >
+                  <Card.Meta
+                    title="MegCook炒菜机"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>Amount:{a}</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col> 
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={shangcaiAGV} />}
+                >
+                  <Card.Meta
+                    title="上菜AGV"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>Amount:{a}</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col>
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={yunliaoAGV} />}
+                >
+                  <Card.Meta
+                    title="运料AGV"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>Amount:{a}</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col>
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={yingbingAGV} />}
+                >
+                  <Card.Meta
+                    title="迎宾机器人"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>Amount:{a}</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col>
+              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src={heidou} />}
+                >
+                  <Card.Meta
+                    title="黑豆机器人"
+                    description={
+                      <div>
+                        <p>Amount:</p>
+                      </div>
+                    }
+                  />
+                  <Tooltip
+                    title={
+                      <div>
+                        <p>Amount:{a}</p>
+                      </div>
+                    }
+                    trigger='click'
+                    placement='right'
+                  >
+                    详细信息
+                  </Tooltip>
+                </Card>
+              </Col>    
             </Row>
           </Fragment>
         </PageHeaderLayout>
