@@ -48,6 +48,14 @@ import shangcaiAGV from '../../assets/shangcaiAGV.png'
 import yingbingAGV from '../../assets/yingbingAGV.png'
 import yunliaoAGV from '../../assets/yunliaoAGV.png'
 import metcook from '../../assets/MetCook.png'
+import aobo from '../../assets/aobo.png'
+import dafan from '../../assets/dafan.png'
+import fanxing from '../../assets/fanxing.png'
+import jiazhiAGV from '../../assets/jiazhiAGV.png'
+import rethink from '../../assets/Rethink.png'
+import UR from '../../assets/UR.png'
+import xiaobaiAGV from '../../assets/xiaobai.png'
+import xiaoheiAGV from '../../assets/xiaoheiAGV.png'
 
 require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
@@ -521,7 +529,24 @@ export default class Analysis extends Component {
         </div>
       </div>
     );
-    const a= 4
+
+    const devices = [[
+      {titile:'FAUNC机器人',src:fanuc,description:[5,<div><p>3台位于试验区，用于参观展示</p><p>2台用于厨房，用于实现自动化炒菜</p><p>1台用于洗碗区，用于抓盘子</p></div>]},
+      {titile:'UR机器人',src:UR,description:[3,<div><p>3台均位于试验区进行调试，实现煮面机，煎饼机的自动化集成</p></div>]},
+      {titile:'傲博机器人',src:aobo,description:[3,<div><p>3台均位于试验区，2台用于自动沏茶，1台用于自动化拧螺丝</p></div>]},
+      {titile:'Rethink机器人',src:rethink,description:[2,<div><p>1台位于餐厅入口处，用来和客人进行互动</p><p>1台位于试验区，用于自动化煎饼机</p></div>]},
+      {titile:'迎宾机器人',src:yingbingAGV,description:[1,<div><p>1台位于餐厅入口处，用来带领客人准确入座</p></div>]},
+      {titile:'黑豆机器人',src:heidou,description:[1,<div><p>1台位于餐厅入口处，用于和客人进行互动</p></div>]}],
+      [
+      {titile:'送料AGV',src:yunliaoAGV,description:[1,<div><p>1台位于厨房区，用于炒菜原料的运送</p></div>]},
+      {titile:'MegCook炒菜机',src:metcook,description:[3,<div><p>3台均位于厨房区，集成FANUC机器人实现自动化炒菜</p></div>]},
+      {titile:'繁星炒菜机',src:fanxing,description:[3,<div><p>3台均位于厨房</p></div>]},
+      {titile:'打饭机器人',src:dafan,description:[1,<div><p>1台位于厨房区，用于自动化打饭</p></div>]},
+      {titile:'送菜AGV',src:shangcaiAGV,description:[1,<div><p>1台位于用餐区，负责上菜</p></div>]},
+      // {titile:'迦智AGV',src:jiazhiAGV,description:[3]},
+      {titile:'自助服务AGV',src:xiaoheiAGV,description:[1,<div><p>1台位于用餐区，负责给客人提供常用的服务用品</p></div>]},
+    ],
+    ]
 
     return (
       <div>
@@ -533,170 +558,44 @@ export default class Analysis extends Component {
               </Col>
             </Row> */}
             <Row>
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={fanuc} />}
-                >
-                  <Card.Meta
-                    title="FANUC机器人"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
+              {devices.map((item,i)=>(
+                <Row>
+                  {item.map((key,ii)=>(
+                    <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
+                      <Card
+                        hoverable
+                        // bodyStyle={{backgroundColor:'#fafafa'}}
+                        style={{ width: 240 }}
+                        cover={<img alt="example" src={key.src} style={{backgroundColor:'#fafafa'}} />}
+                      >
+                        <Card.Meta
+                          // style={{backgroundColor:'#e6e8e3'}}
+                          title={key.titile}
+                          description={
+                            <div style={{width:'100%'}}>
+                              <span>设备数量: {key.description[0]}</span>   
+                              <span style={{float:"right"}}>
+                                <Tooltip
+                                  title={
+                                    <div>
+                                      {key.description[1]}
+                                    </div>}
+                                  trigger='click'
+                                  placement='right'
+                                >
+                                  <Icon type="link" />
+                                </Tooltip>
+                              </span>
+                            </div>
                     }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>3台位于试验区，用于参观展示</p>
-                        <p>1台位于厨房，用于炒菜</p>
-                        <p>1台位于洗碗区，用于洗碗</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col> 
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={metcook} />}
-                >
-                  <Card.Meta
-                    title="MegCook炒菜机"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
-                    }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>Amount:{a}</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col> 
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={shangcaiAGV} />}
-                >
-                  <Card.Meta
-                    title="上菜AGV"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
-                    }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>Amount:{a}</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col>
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={yunliaoAGV} />}
-                >
-                  <Card.Meta
-                    title="运料AGV"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
-                    }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>Amount:{a}</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col>
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={yingbingAGV} />}
-                >
-                  <Card.Meta
-                    title="迎宾机器人"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
-                    }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>Amount:{a}</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col>
-              <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src={heidou} />}
-                >
-                  <Card.Meta
-                    title="黑豆机器人"
-                    description={
-                      <div>
-                        <p>Amount:</p>
-                      </div>
-                    }
-                  />
-                  <Tooltip
-                    title={
-                      <div>
-                        <p>Amount:{a}</p>
-                      </div>
-                    }
-                    trigger='click'
-                    placement='right'
-                  >
-                    详细信息
-                  </Tooltip>
-                </Card>
-              </Col>    
+                        />
+                        
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              ))}
+
             </Row>
           </Fragment>
         </PageHeaderLayout>
