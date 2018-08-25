@@ -476,13 +476,13 @@ export default class Analysis extends Component {
       <div className={styles.extraContent}>
         <div className={styles.statItem}>
           <p>设备数量</p>
-          <p>13</p>
+          <p>25</p>
         </div>
         <div className={styles.statItem}>
           <p>正在运行</p>
           <p>
-            8
-            <span> / 13</span>
+            15
+            <span> / 25</span>
           </p>
         </div>
         <div className={styles.statItem}>
@@ -564,12 +564,10 @@ export default class Analysis extends Component {
                     <Col style={{marginBottom:24}} xl={4} lg={8} md={8} sm={12} xs={24}>
                       <Card
                         hoverable
-                        // bodyStyle={{backgroundColor:'#fafafa'}}
-                        style={{ width: 240 }}
+                        style={{ width: 240,borderRadius:' 0 0 8px 8px'}}
                         cover={<img alt="example" src={key.src} style={{backgroundColor:'#fafafa'}} />}
                       >
                         <Card.Meta
-                          // style={{backgroundColor:'#e6e8e3'}}
                           title={key.titile}
                           description={
                             <div style={{width:'100%'}}>
@@ -583,13 +581,12 @@ export default class Analysis extends Component {
                                   trigger='click'
                                   placement='right'
                                 >
-                                  <Icon type="link" />
+                                  <Icon type="link" style={{fontSize:20}} />
                                 </Tooltip>
                               </span>
                             </div>
-                    }
+                            }
                         />
-                        
                       </Card>
                     </Col>
                   ))}
