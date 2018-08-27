@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 350 350">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #e9f2fe;
+      }
+
+      .cls-2 {
+        fill: #2a6ec7;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        filter: url(#Ellipse_8);
+      }
+    </style>
+    <filter id="Ellipse_8" x="0" y="0" width="350" height="350" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="25" result="blur"/>
+      <feFlood flood-color="#c2dbfc"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_9" data-name="Group 9" transform="translate(-105 -690)">
+    <g class="cls-5" transform="matrix(1, 0, 0, 1, 105, 690)">
+      <g id="Ellipse_8-2" data-name="Ellipse 8" class="cls-1" transform="translate(75 75)">
+        <circle class="cls-3" cx="100" cy="100" r="100"/>
+        <circle class="cls-4" cx="100" cy="100" r="99.5"/>
+      </g>
+    </g>
+    <path id="Subtraction_1" data-name="Subtraction 1" class="cls-2" d="M-1899.644,59.235h-77.961l-.443-.658L-1938.624,0l39.423,58.577-.442.657Z" transform="translate(318.211 2803.976) rotate(90)"/>
+  </g>
+</svg>

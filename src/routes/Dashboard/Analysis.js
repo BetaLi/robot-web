@@ -18,6 +18,7 @@ import {
   Menu,
   Dropdown,
   Avatar,
+  Button,
 } from 'antd';
 import numeral from 'numeral';
 import {
@@ -51,11 +52,13 @@ import metcook from '../../assets/MetCook.png'
 import aobo from '../../assets/aobo.png'
 import dafan from '../../assets/dafan.png'
 import fanxing from '../../assets/fanxing.png'
-import jiazhiAGV from '../../assets/jiazhiAGV.png'
+// import jiazhiAGV from '../../assets/jiazhiAGV.png'
 import rethink from '../../assets/Rethink.png'
 import UR from '../../assets/UR.png'
-import xiaobaiAGV from '../../assets/xiaobai.png'
+// import xiaobaiAGV from '../../assets/xiaobai.png'
 import xiaoheiAGV from '../../assets/xiaoheiAGV.png'
+import playIcon from '../../assets/play.svg'
+// import bzlVideo from '../../assets/vvideo.mp4'
 
 require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
@@ -330,6 +333,18 @@ export default class Analysis extends Component {
     });
   };
 
+  handleClick = e=> {
+    if (document.getElementById('video1').style.display === 'none') {
+      document.getElementById('video1').style.display = 'block'
+      document.getElementById('video1').play()
+    }
+    else{
+      document.getElementById('video1').pause()
+      document.getElementById('video1').style.display = 'none'
+    }
+    
+  }
+
   selectDate = type => {
     this.setState({
       rangePickerValue: getTimeDistance(type),
@@ -592,7 +607,25 @@ export default class Analysis extends Component {
                   ))}
                 </Row>
               ))}
-
+            </Row>
+            <Row>
+              <Col span={24}>
+                <div style={{width:'100%',backgroundColor:'#f9fcff',marginBottom:15}}>
+                  <h2 className={styles.title}>博智林机器人公司从这里开始</h2>
+                  {/* <h4 className={styles.title} style={{color:'#acacac'}}>设备演示视频，点击播放</h4> */}
+                  <div className={styles.video}>
+                    <img alt="playIcon" src={playIcon} style={{width:100,height:100}} onClick={this.handleClick} />
+                  </div>
+                  <video id="video1" style={{width:'80%',margin:'10px auto',display:'none',paddingBottom:20}} controls> 
+                    <source
+                      src="http://139.199.66.122:5000/api/video"
+                      type="video/mp4"
+                      style={{margin:'10px auto'}}
+                    />
+                  </video>
+                </div>
+              </Col>
+              
             </Row>
           </Fragment>
         </PageHeaderLayout>
