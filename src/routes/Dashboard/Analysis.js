@@ -59,6 +59,7 @@ import UR from '../../assets/UR.png'
 import xiaoheiAGV from '../../assets/xiaoheiAGV.png'
 import playIcon from '../../assets/play.svg'
 // import bzlVideo from '../../assets/vvideo.mp4'
+import stopIcon from '../../assets/stop.svg'
 
 require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
@@ -337,10 +338,12 @@ export default class Analysis extends Component {
     if (document.getElementById('video1').style.display === 'none') {
       document.getElementById('video1').style.display = 'block'
       document.getElementById('video1').play()
+      document.getElementById('playIcon').src = stopIcon
     }
     else{
       document.getElementById('video1').pause()
       document.getElementById('video1').style.display = 'none'
+      document.getElementById('playIcon').src = playIcon
     }
     
   }
@@ -611,14 +614,15 @@ export default class Analysis extends Component {
             <Row>
               <Col span={24}>
                 <div style={{width:'100%',backgroundColor:'#f9fcff',marginBottom:15}}>
-                  <h2 className={styles.title}>博智林机器人公司从这里开始</h2>
+                  
                   {/* <h4 className={styles.title} style={{color:'#acacac'}}>设备演示视频，点击播放</h4> */}
                   <div className={styles.video}>
-                    <img alt="playIcon" src={playIcon} style={{width:100,height:100}} onClick={this.handleClick} />
+                    <img id="playIcon" alt="playIcon" src={playIcon} style={{width:100,height:100}} onClick={this.handleClick} />
+                    <h2 className={styles.title}>设备联动调试视频</h2>
                   </div>
                   <video id="video1" style={{width:'80%',margin:'10px auto',display:'none',paddingBottom:20}} controls> 
                     <source
-                      src="http://139.199.66.122:5000/api/video"
+                      src="http://localhost:5000/api/video"
                       type="video/mp4"
                       style={{margin:'10px auto'}}
                     />

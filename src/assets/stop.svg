@@ -3,11 +3,11 @@
     <style>
       .cls-1 {
         fill: #fff;
-        stroke: #e9f2fe;
+        stroke: #dddada;
       }
 
       .cls-2 {
-        fill: #2a6ec7;
+        fill: #a2a0a0;
       }
 
       .cls-3 {
@@ -25,18 +25,19 @@
     <filter id="Ellipse_8" x="0" y="0" width="218.534" height="218.534" filterUnits="userSpaceOnUse">
       <feOffset input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="25" result="blur"/>
-      <feFlood flood-color="#c2dbfc"/>
+      <feFlood flood-color="#958d8d"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="Group_9" data-name="Group 9" transform="translate(-105 -690)">
+  <g id="Group_10" data-name="Group 10" transform="translate(-105 -690)">
     <g class="cls-5" transform="matrix(1, 0, 0, 1, 105, 690)">
       <g id="Ellipse_8-2" data-name="Ellipse 8" class="cls-1" transform="translate(75 75)">
         <circle class="cls-3" cx="34.267" cy="34.267" r="34.267"/>
         <circle class="cls-4" cx="34.267" cy="34.267" r="33.767"/>
       </g>
     </g>
-    <path id="Subtraction_1" data-name="Subtraction 1" class="cls-2" d="M26.867,20.3H.152L0,20.073,13.509,0,27.018,20.073l-.152.225Z" transform="translate(227.361 785.878) rotate(90)"/>
+    <rect id="Rectangle_21" data-name="Rectangle 21" class="cls-2" width="5" height="27" transform="translate(207 786)"/>
+    <rect id="Rectangle_22" data-name="Rectangle 22" class="cls-2" width="5" height="27" transform="translate(216 786)"/>
   </g>
 </svg>
