@@ -4,11 +4,24 @@ import styles from './map.less'
 
 const { Header,Content } = Layout
 
-import back from '../../assets/background.jpg'
 
 
 export default class Map extends React.Component{
+  componentDidMount(){
+    window.addEventListener('resize',this.handHeight)
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize',this.handHeight)
+  }
+
+  handHeight = ()=> {
+    const ff = document.getElementById("background").offsetWidth
+    document.getElementById('background').style.height = `${Math.floor(ff*1486/3972)}px`
+  }
+
   render(){
+    
     return (
       <div>
         <Layout>
@@ -16,7 +29,9 @@ export default class Map extends React.Component{
           <Content>
             <Row>
               <Col span={24}>
-                <div className={styles.background}>dd</div>
+                <div id="background" className={styles.background}>
+                  <div style={{width:10,height:10,position:'relative',top:'10%',left:'30%',border:'solid 1px'}} />
+                </div>
               </Col>
             </Row>
           </Content>

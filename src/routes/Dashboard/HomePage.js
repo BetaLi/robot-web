@@ -104,7 +104,7 @@ const option = {
               <Tabs>
                 <TabPane tab="" key="sales" style={{fontSize:20}}>
                   <Row>
-                    <Col xl={16} lg={12} md={12} sm={24} xs={24}>
+                    <Col xl={16} lg={24} md={24} sm={24} xs={24}>
                       <div>
                         <Row style={{marginLeft:20}}>
                           <h3 style={{fontFamily:'黑体',color:'rgb(25,134,165)',fontSize:30}}><b>营业数据总览</b></h3>
@@ -144,7 +144,7 @@ const option = {
                         <Row style={{float:"right"}}><div><Link to='/dashboard/analysis'> 营业数据详情 </Link></div></Row>
                       </div>
                     </Col>
-                    <Col xl={8} lg={12} md={12} sm={24} xs={24}>
+                    <Col xl={8} lg={24} md={24} sm={24} xs={24}>
                       <div className={styles.salesRank}>
                         <h4 className={styles.rankingTitle}><span style={{color:'rgb(25,134,165)',fontSize:23}}>今日热门菜品</span></h4>
                         <ul className={styles.rankingList}>
@@ -168,7 +168,7 @@ const option = {
                   <h3 style={{fontFamily:'黑体',color:'rgb(25,134,165)',fontSize:30}}><b>设备信息总览</b></h3>
                 </Row>
                 <Row gutter={16}>
-                  <Col span={5} xl={5} lg={22} md={22} sm={22} xs={22}>
+                  <Col xl={6} lg={22} md={22} sm={22} xs={22}>
                     <div style={{fontSize:25,marginLeft:40}}>
                   设备运转情况
                       <div style={{display:'inline',fontSize:20}}><Link to='/dashboard/workplace'> (设备数据详情)</Link></div>
@@ -179,13 +179,11 @@ const option = {
                       <p>机械臂：<Icon type="check-circle" style={{color:'rgb(135,208,104)',fontSize:19}} /></p>
                     </div>
                   </Col>
-                  <Col span={1} />
-                  <Col span={8} xl={8} lg={22} md={22} sm={22} xs={22}>
-                    <div id="main" style={{height:400,width:600}}>
-                      {/* <Table dataSource={dataSource} columns={colums} size="default" /> */}
-                    </div>
+                  <Col xl={8} lg={22} md={22} sm={22} xs={22}>
+                    <div id="main" style={{height:400,width:600}} />
                   </Col>
-                  <Col span={8} xl={8} lg={22} md={22} sm={24} xs={22}>
+                  <Col span={1} />
+                  <Col xl={8} lg={22} md={22} sm={24} xs={22}>
                     <div><b style={{fontfamily:'黑体'}}>餐厅平面图</b></div>
                     <div id='chart2' style={{width:698,height:379}}>
                       <Link to='/dashboard/map'>
@@ -193,7 +191,7 @@ const option = {
                       </Link>
                     </div>
                   </Col>
-                  <Col span={1} />
+                  
                 </Row>
               </TabPane>
             </Tabs>
