@@ -8,7 +8,11 @@ const menuData = [
     path: 'dashboard',
     children: [ 
       {
-        name: '分析页',
+        name: '首页',
+        path: 'homepage',
+      },
+      {
+        name: '营业数据',
         path: 'analysis',
       },
       // {
@@ -16,13 +20,17 @@ const menuData = [
       //   path: 'monitor',
       // },
       {
-        name: '工作台',
+        name: '设备数据',
         path: 'workplace',
         // hideInBreadcrumb: true,
         // hideInMenu: true,
       },
       {
-        name:'公司画廊',
+        name:'电子地图',
+        path:'map',
+      },
+      {
+        name:'员工数据',
         path:'gallery',
       },
     ],

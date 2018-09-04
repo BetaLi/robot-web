@@ -32,32 +32,32 @@ const proxy = {
   'GET /api/project/orderList':[
     {
       title: '黑椒汁牛仔骨',
-      total: tableInfos[0]['tableInfo'],
+     
       operation: '30',
     },
     {
       title: '菜远煎焗鸡',
-      total: tableInfos[0]['tableInfo'],
+    
       operation: '28',
     },
     {
       title: '头菜炒猪颈肉',
-      total: tableInfos[0]['tableInfo'],
+      
       operation: '25',
     },
     {
       title: '哈密炒北极贝',
-      total: tableInfos[0]['tableInfo'],
+      
       operation: '20',
     },
     {
       title: '酱肉碎炒豆角粒',
-      total: tableInfos[0]['tableInfo'],
+     
       operation: '18',
     },
     {
       title: '酸姜糖醋烧鸭丝',
-      total: tableInfos[0]['tableInfo'],
+   
       operation: '15',
     }
   ],

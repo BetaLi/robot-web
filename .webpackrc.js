@@ -6,29 +6,7 @@ export default {
   env: {
     development: {
       extraBabelPlugins: ['dva-hmr'],
-      proxy: {
-        '/api/notices': {
-          target: 'http://localhost:5000/',
-          changeOrigin: true,
-        },
-        '/_debugbar': {
-          target: 'http://localhost:5000/',
-          changeOrigin: true,
-        },
-      },
-      },
-    production:{
-      proxy: {
-        '/api/notices': {
-          target: 'http://localhost:5000/',
-          changeOrigin: true,
-        },
-        '/_debugbar': {
-          target: 'http://localhost:5000/',
-          changeOrigin: true,
-        },
-      },
-    }
+    },
   },
   externals: {
     '@antv/data-set': 'DataSet',
