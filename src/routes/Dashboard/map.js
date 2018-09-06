@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout,Row,Col,Tooltip } from 'antd'
+import { Layout,Row,Col,Tooltip,Modal } from 'antd'
 import styles from './map.less'
 
 import robot from '../../assets/icon/robot.png'
@@ -22,6 +22,8 @@ import robotHeart from '../../assets/icon/芯片.png'
 const { Header,Content } = Layout
 
 export default class Map extends React.Component{
+  state = { visible: false }
+
   componentDidMount(){
     window.addEventListener('resize',this.handHeight)
     this.handHeight()
@@ -56,6 +58,22 @@ export default class Map extends React.Component{
     }
   }
 
+  handleModal = (data) => {
+    // alert(data)
+    Modal.info({
+      title: 'This is a notification message',
+      content: (
+        <div>
+          <p>some messages...some messages...</p>
+          <p>some messages...some messages...</p>
+        </div>
+      ),
+      okText:'好的',
+      centered:true,
+      onOk() {},
+    });
+  }
+
   render(){
     return (
       <div>
@@ -65,66 +83,66 @@ export default class Map extends React.Component{
             <Row>
               <Col span={24}>
                 <div id="background" className={styles.background}>
-                  <div style={{position:'absolute',top:'23%',left:'44%'}}><Tooltip title="宣传展示屏"><img className="icon" src={screen} alt="" /></Tooltip></div>
+                  <div style={{position:'absolute',top:'23%',left:'44%'}}><Tooltip title="宣传展示屏"><img onClick={this.handleModal.bind(this,1)} className="icon" src={screen} alt="" /></Tooltip></div>
                   {/* <div style={{position:'absolute',top:'18%',left:'8%'}}><Tooltip title="用餐区"><img className="icon_60" src={resturant} alt="" /></Tooltip></div> */}
-                  <div style={{position:'absolute',top:'3%',left:'38%'}}><Tooltip title="傲博倒茶机器人"><img className="icon" src={robotTea} alt="" /></Tooltip></div>
-                  <div style={{position:'absolute',top:'3%',left:'41%'}}><Tooltip title="UR5收拾餐具"><img className="icon" src={ur} alt="" /></Tooltip></div>
-                  <div style={{position:'absolute',top:'3%',left:'50%'}}><Tooltip title="Omron AGV 抓盘展示"><img className="icon" src={robot} alt="" /></Tooltip></div>
+                  <div style={{position:'absolute',top:'3%',left:'38%'}}><Tooltip title="傲博倒茶机器人"><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotTea} alt="" /></Tooltip></div>
+                  <div style={{position:'absolute',top:'3%',left:'41%'}}><Tooltip title="UR5收拾餐具"><img onClick={this.handleModal.bind(this,1)} className="icon" src={ur} alt="" /></Tooltip></div>
+                  <div style={{position:'absolute',top:'3%',left:'50%'}}><Tooltip title="Omron AGV 抓盘展示"><img onClick={this.handleModal.bind(this,1)} className="icon" src={robot} alt="" /></Tooltip></div>
 
-                  <div style={{position:'absolute',top:'74%',left:'35%'}}><img className="icon" src={robotYingbing} alt="" /></div>
-                  <div style={{position:'absolute',top:'68%',left:'35%'}}><img className="icon" src={robotHeidou} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'38%'}}><img className="icon" src={robotChess} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'41%'}}><img className="icon" src={robotTea} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'44%'}}><img className="icon" src={robotChess2} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'47%'}}><img className="icon" src={robotMirror} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'50%'}}><img className="icon" src={robotCoffee} alt="" /></div>
-                  <div style={{position:'absolute',top:'88%',left:'53%'}}><img className="icon" src={robotHeart} alt="" /></div>
+                  <div style={{position:'absolute',top:'74%',left:'35%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotYingbing} alt="" /></div>
+                  <div style={{position:'absolute',top:'68%',left:'35%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotHeidou} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'38%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotChess} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'41%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotTea} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'44%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotChess2} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'47%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotMirror} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'50%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotCoffee} alt="" /></div>
+                  <div style={{position:'absolute',top:'88%',left:'53%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={robotHeart} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'44%',left:'84.5%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'44%',left:'88%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'44%',left:'91.5%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'44%',left:'95%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'16%',left:'84%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'22%',left:'89.5%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'12%',left:'72%'}}><img className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'44%',left:'84.5%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'44%',left:'88%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'44%',left:'91.5%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'44%',left:'95%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'16%',left:'84%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'22%',left:'89.5%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'12%',left:'72%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'23%',left:'95.5%'}}><img className="icon" src={assembleLine} alt="" /></div>
-                  <div style={{position:'absolute',top:'18%',left:'95.5%'}}><img className="icon" src={assembleLine} alt="" /></div>
-                  <div style={{position:'absolute',top:'13%',left:'95.5%'}}><img className="icon" src={assembleLine} alt="" /></div>
-                  <div style={{position:'absolute',top:'28%',left:'95.5%'}}><img className="icon" src={assembleLine} alt="" /></div>
-                  <div style={{position:'absolute',top:'33%',left:'95.5%'}}><img className="icon" src={assembleLine} alt="" /></div>
+                  <div style={{position:'absolute',top:'23%',left:'95.5%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={assembleLine} alt="" /></div>
+                  <div style={{position:'absolute',top:'18%',left:'95.5%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={assembleLine} alt="" /></div>
+                  <div style={{position:'absolute',top:'13%',left:'95.5%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={assembleLine} alt="" /></div>
+                  <div style={{position:'absolute',top:'28%',left:'95.5%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={assembleLine} alt="" /></div>
+                  <div style={{position:'absolute',top:'33%',left:'95.5%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={assembleLine} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'36%',left:'38%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'38%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'45%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'45%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'52%'}}><img className="icon" src={robot50} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'52%'}}><img className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'38%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'38%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'45%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'45%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'52%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'52%'}}><img onClick={this.handleModal.bind(this,2)} className="icon" src={robot50} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'41.5%',left:'38%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'36%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'40%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'48.5%',left:'38%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'36%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'40%'}}><img className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'41.5%',left:'38%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'36%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'40%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'48.5%',left:'38%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'36%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'40%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
                   
-                  <div style={{position:'absolute',top:'41.5%',left:'45%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'43%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'47%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'48.5%',left:'45%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'43%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'47%'}}><img className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'41.5%',left:'45%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'43%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'47%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'48.5%',left:'45%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'43%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'47%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'41.5%',left:'52%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'50%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'36%',left:'54%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'48.5%',left:'52%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'50%'}}><img className="icon" src={cook} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'54%'}}><img className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'41.5%',left:'52%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'50%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'36%',left:'54%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'48.5%',left:'52%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'50%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'54%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cook} alt="" /></div>
 
-                  <div style={{position:'absolute',top:'54%',left:'58%'}}><img className="icon" src={cookFanxing} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'60.6%'}}><img className="icon" src={cookFanxing} alt="" /></div>
-                  <div style={{position:'absolute',top:'54%',left:'63.2%'}}><img className="icon" src={cookFanxing} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'58%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cookFanxing} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'60.6%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cookFanxing} alt="" /></div>
+                  <div style={{position:'absolute',top:'54%',left:'63.2%'}}><img onClick={this.handleModal.bind(this,1)} className="icon" src={cookFanxing} alt="" /></div>
                 </div>
               </Col>
             </Row>

@@ -3,7 +3,7 @@ import { Link } from 'dva/router'
 import { Layout,Tabs,Row,Col,Table,Icon,Progress } from 'antd'
 import echarts from 'echarts'
 import styles from './HomePage.less'
-import robotLocation from '../../assets/robot-location.png'
+import robotBackground from '../../assets/background.png'
 
 const {
   Header,
@@ -42,39 +42,15 @@ const orderList = [{
       operation: '15',
     }]
 
-// const colums = [{
-//   title:<span style={{fontSize:20}}>设备利用率</span>,
-//   dataIndex:'device',
-//   key:'device',
-// },{
-//   title:<span style={{fontSize:20}}>上午(6:00-10:00)</span>,
-//   dataIndex:'morning',
-//   key:'morning',
-// },{
-//   title:<span style={{fontSize:20}}>中午(11:00-14:00)</span>,
-//   dataIndex:'afternoon',
-//   key:'afternoon',
-// }, {
-//   title: <span style={{fontSize:20}}>晚上(16:00-21:00)</span>,
-//   dataIndex: 'moon',
-//   key: 'moon',
-// }]
-
-// const dataSource =[{
-//   key:'1',
-//   device:<div style={{height:80}} />,
-//   morning:<div style={{width:'50%'}}><Progress percent={50} status="active" strokeWidth={12} strokecolor="rgb(155,155,155)" /></div>,
-//   afternoon: <div style={{width:'50%'}}><Progress percent={50} status="active" strokeWidth={12} /></div>,
-//   moon: <div style={{width:'50%'}}><Progress percent={50} status="active" strokeWidth={12} /></div>,
-// }]
-
 export default class HomePage extends Component{
   componentDidMount() {
+    window.addEventListener('resize',this.handSize);
+    this.handSize()
     const app = echarts.init(document.getElementById('main'))
     app.title = "设备使用率"
-const option = {
-  color:['rgb(131,182,238)'],
-  title:{
+    const option = {
+    color:['rgb(131,182,238)'],
+    title:{
     text:'设备利用率(%)',
   },
   xAxis: {
@@ -89,9 +65,22 @@ const option = {
     data: [10, 40, 60, 70, 50, 80, 88,60],
     barWidth:'50%',
     type: 'bar',
-  }],
-};
+}]};
     app.setOption(option)
+  }
+
+  componentWillUpdate() {
+    this.handSize()
+  }
+
+  componentWillUnmount() {
+    this.handSize()
+    window.removeEventListener('resize',this.handSize)
+  }
+
+  handSize = () => {
+    const ff = document.getElementById("main").offsetWidth
+    document.getElementById('main').style.height = `${Math.floor(320*ff/608)}px`
   }
 
   render() {
@@ -167,7 +156,7 @@ const option = {
                 <Row style={{marginLeft:20}}>
                   <h3 style={{fontFamily:'黑体',color:'rgb(25,134,165)',fontSize:30}}><b>设备信息总览</b></h3>
                 </Row>
-                <Row gutter={16}>
+                <Row gutter={16} style={{height:320}}>
                   <Col xl={6} lg={22} md={22} sm={22} xs={22}>
                     <div style={{fontSize:25,marginLeft:40}}>
                   设备运转情况
@@ -180,18 +169,20 @@ const option = {
                     </div>
                   </Col>
                   <Col xl={8} lg={22} md={22} sm={22} xs={22}>
-                    <div id="main" style={{height:400,width:600}} />
+                    <div id="main" style={{width:'100%'}} />
                   </Col>
                   <Col span={1} />
                   <Col xl={8} lg={22} md={22} sm={24} xs={22}>
-                    <div><b style={{fontfamily:'黑体'}}>餐厅平面图</b></div>
-                    <div id='chart2' style={{width:698,height:379}}>
+                    <div><b style={{fontfamily:'黑体'}}>设备实时电子地图</b></div>
+                    <div id='chart2' style={{marginTop:20}}>
                       <Link to='/dashboard/map'>
-                        <img src={robotLocation} alt='robot location' style={{width:'100%',height:'100%'}} />
+                        <div style={{position:'relative',width:'100%'}}>
+                          <img id="map" src={robotBackground} alt='robot location' style={{width:'100%'}} />
+                          <div style={{position:'absolute',top:'40%',left:'35%',color:'rgba(150,150,150,0.4)',fontSize:25,fontFamily:'微软雅黑'}}>点击查看详情</div>
+                        </div>
                       </Link>
                     </div>
                   </Col>
-                  
                 </Row>
               </TabPane>
             </Tabs>
