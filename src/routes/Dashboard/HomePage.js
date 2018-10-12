@@ -1,9 +1,10 @@
 import React,{ Component }  from 'react'
 import { Link } from 'dva/router'
-import { Layout,Tabs,Row,Col,Table,Icon,Progress } from 'antd'
+import { Layout,Tabs,Row,Col,Icon,Progress } from 'antd'
 import echarts from 'echarts'
 import styles from './HomePage.less'
 import robotBackground from '../../assets/background.png'
+import seeDetail from '../../assets/icon/详情3.png'
 
 const {
   Header,
@@ -103,7 +104,9 @@ export default class HomePage extends Component{
                             <div>
                               <div style={{fontSize:25,color:'rgb(100,100,100)'}}>今日营业总额</div>
                               <div style={{marginTop:10,fontSize:24,fontFamily:'微软雅黑',color:'rgb(24,144,255)'}}>￥<b style={{fontSize:31}}>5,556</b></div>
-                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>昨日营业额：￥5,785<span style={{fontSize:16}}>  &nbsp;下降 25%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span></div>
+                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>
+                                昨日营业额：￥5,785<span style={{fontSize:16}}>  &nbsp;下降 25%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span>
+                              </div>
                               <div style={{paddingTop:30}}>
                                 <Progress type="circle" percent={75} strokeWidth={8} strokecolor='rgb(0,0,0)' />
                               </div>
@@ -113,7 +116,9 @@ export default class HomePage extends Component{
                             <div>
                               <div style={{fontSize:25,color:'rgb(100,100,100)'}}>今日客流量</div>
                               <div style={{marginTop:10,fontSize:24,fontFamily:'微软雅黑',color:'rgb(132,178,71)'}}><b style={{fontSize:31}}>789</b>人</div>
-                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>昨日客流量：829人<span style={{fontSize:16}}>  &nbsp;下降 12%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span></div>
+                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>
+                              昨日客流量：829人<span style={{fontSize:16}}>  &nbsp;下降 12%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span>
+                              </div>
                               <div style={{paddingTop:30}}>
                                 <Progress type="circle" percent={88} strokecolor='rgb(132,178,71)' strokeWidth={8} />
                               </div>
@@ -123,7 +128,9 @@ export default class HomePage extends Component{
                             <div>
                               <div style={{fontSize:25,color:'rgb(100,100,100)'}}>今日订单总数</div>
                               <div style={{marginTop:10,fontSize:24,fontFamily:'微软雅黑',color:'rgb(239,143,63)'}}><b style={{fontSize:31}}>521</b>单</div>
-                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>昨日订单总数：536单<span style={{fontSize:16}}>  &nbsp;下降 20%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span></div>
+                              <div style={{marginTop:8,color:'rgb(170,170,170)'}}>
+                              昨日订单总数：536单<span style={{fontSize:16}}>  &nbsp;下降 20%&nbsp;<Icon type="arrow-down" style={{color:"rgb(132,178,71)"}} /></span>
+                              </div>
                               <div style={{paddingTop:30}}>
                                 <Progress type="circle" percent={80} strokeWidth={8} />
                               </div>
@@ -178,7 +185,9 @@ export default class HomePage extends Component{
                       <Link to='/dashboard/map'>
                         <div style={{position:'relative',width:'100%'}}>
                           <img id="map" src={robotBackground} alt='robot location' style={{width:'100%'}} />
-                          <div style={{position:'absolute',top:'40%',left:'35%',color:'rgba(150,150,150,0.4)',fontSize:25,fontFamily:'微软雅黑'}}>点击查看详情</div>
+                          <div style={{position:'absolute',bottom:'0%',right:'0%',color:'rgba(150,150,150,0.4)',fontSize:25,fontFamily:'微软雅黑'}}>
+                            <img src={seeDetail} alt="查看详情" style={{width:25}} />
+                          </div>
                         </div>
                       </Link>
                     </div>
