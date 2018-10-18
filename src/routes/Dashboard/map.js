@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout,Row,Col,Tooltip,Modal } from 'antd'
+import { Layout,Row,Col,Tooltip,Modal,Card } from 'antd'
 import styles from './map.less'
 
 import robot from '../../assets/icon/robot.png'
@@ -19,6 +19,9 @@ import robotTea from '../../assets/icon/茶.png'
 import robotCoffee from '../../assets/icon/咖啡机.png'
 import robotHeart from '../../assets/icon/芯片.png'
 import monitor from '../../assets/monitor.png'
+import tem_icon from '../../assets/icon/温度.png'
+import humi_icon from '../../assets/icon/湿度.png'
+import green_dot from '../../assets/icon/绿点.png'
 
 const { Header,Content } = Layout
 
@@ -87,6 +90,7 @@ export default class Map extends React.Component{
     ]
 
     setInterval(()=>{
+      const env =[{tempreture:`${Number(Math.random()+27.5).toFixed(2)}`,humidity:`${Number(Math.random()+53.5).toFixed(2)}`}]
       document.getElementById(`${count-1}`).style.width = `${w}px`;
       document.getElementById(`${count-1}`).style.zIndex = 1;
       document.getElementById(`${count}`).style.position = 'absolute'
@@ -99,6 +103,8 @@ export default class Map extends React.Component{
                                                       </p>
                                                       <p><b>设备状态：</b>${Math.random()>0.5 ? '运行中':'空闲'}</p>
                                                       <p><b>任务量：</b>${Math.floor(Math.random()*10)}</p>`
+      document.getElementById('tempreture').innerHTML = `&nbsp室内温度：<span>${env[0].tempreture}℃</span>`
+      document.getElementById('humidity').innerHTML = `&nbsp室内湿度：<span>${env[0].humidity}%</span>`
       if(count<51){
         count +=1;
       }else{
@@ -163,9 +169,12 @@ export default class Map extends React.Component{
             <Row>
               <Col span={24}>
                 <div id="background" className={styles.background}>
+                  <div id="enviroument" style={{position:'absolute',top:'70%',left:'57%',width:190,height:90,backgroundColor:'white',color:'black',padding:10,}}>
+                      <p style={{textAlign:'center'}}><span><img src={green_dot} style={{width:10}} /></span><span id="tempreture" style={{fontSize:'16px'}}>室内温度：</span></p>
+                      <p style={{textAlign:'center'}}><span><img src={green_dot} style={{width:10}} /></span><span id="humidity" style={{fontSize:'16px'}}>室内湿度：</span></p>
+                  </div>
                   <div style={{height:200,width:250,border:'1px dot',position:'absolute',top:'13%',left:'5%',padding:13,backgroundImage:`url("${monitor}")`,backgroundSize:'contain',backgroundRepeat:'no-repeat',color:'white'}} id="showBox" />
                   <div style={{position:'absolute',top:'23%',left:'44%'}}><Tooltip title="宣传展示屏"><img onClick={this.handleModal.bind(this,1)} id="1" className="icon" src={screen} alt="" /></Tooltip></div>
-                  {/* <div style={{position:'absolute',top:'18%',left:'8%'}}><Tooltip title="用餐区"><img className="icon_60" src={resturant} alt="" /></Tooltip></div> */}
                   <div style={{position:'absolute',top:'3%',left:'38%'}}><Tooltip title="傲博倒茶机器人"><img onClick={this.handleModal.bind(this,1)} id="2" className="icon" src={robotTea} alt="" /></Tooltip></div>
                   <div style={{position:'absolute',top:'3%',left:'41%'}}><Tooltip title="UR5收拾餐具"><img onClick={this.handleModal.bind(this,1)} id="3" className="icon" src={ur} alt="" /></Tooltip></div>
                   <div style={{position:'absolute',top:'3%',left:'50%'}}><Tooltip title="Omron AGV 抓盘展示"><img onClick={this.handleModal.bind(this,1)} id="4" className="icon" src={robot} alt="" /></Tooltip></div>
